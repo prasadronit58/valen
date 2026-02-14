@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sara💙</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Sacramento&display=swap" rel="stylesheet">
+
+    <style>
+        /* RESET & BODY */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Romantic Gradient Background */
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden; 
+        }
+
+        /* THE CARD CONTAINER */
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            max-width: 90%;
+            text-align: center;
+            z-index: 100; 
+        }
+
+        /* TEXT STYLING */
+        h3 {
+            font-family: 'Sacramento', cursive; 
+            font-size: 2.5rem;
+            color: #d63384;
+            margin-bottom: -10px;
+        }
+
+        p {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #444;
+        }
+
+        /* IMAGE STYLING */
+        .image {
+            width: 200px; 
+            height: auto;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+
+        /* BUTTON CONTAINER */
+        .buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        /* BUTTON STYLING */
+        button {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.4s ease; 
+            position: relative; 
+            z-index: 10;
+        }
+
+        /* YES BUTTON */
+        .yes {
+            background-color: #ff4757;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .yes:hover {
+            background-color: #e84118;
+            transform: scale(1.1);
+        }
+
+        /* NO BUTTON - Now looks EXACTLY like Yes */
+        .no {
+            background-color: #ff4757; /* Pink */
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h3>For Sara</h3>
+        <p>Will you be my valentine Suhabi?🙈💙</p>
+        
+        <img src="front.gif" alt="cute asking gif" class="image">
+        
+        <div class="buttons">
+            <button class="yes">Yes</button>
+            <button class="no">No</button>
+        </div>
+    </div>
+
+    <script>
+        const yes = document.querySelector('.yes');
+        const no = document.querySelector('.no');
+        const h3 = document.querySelector('h3');
+        const p = document.querySelector('p');
+        const img = document.querySelector('.image');
+        const btnContainer = document.querySelector('.buttons');
+
+        const moveButton = () => {
+            // 1. Lock the position so it doesn't jump instantly
+            if (no.style.position !== 'fixed') {
+                const rect = no.getBoundingClientRect();
+                no.style.left = rect.left + 'px';
+                no.style.top = rect.top + 'px';
+                no.style.position = 'fixed'; 
+            }
+
+            // 2. Move after a tiny delay to trigger the animation
+            setTimeout(() => {
+                const maxWidth = window.innerWidth - 100;
+                const maxHeight = window.innerHeight - 100;
+
+                const randomX = Math.random() * (maxWidth - 50) + 25;
+                const randomY = Math.random() * (maxHeight - 50) + 25;
+
+                no.style.left = randomX + 'px';
+                no.style.top = randomY + 'px';
+            }, 50); 
+        }
+
+        // Event Listeners
+        no.addEventListener('mouseover', moveButton);
+        no.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+        no.addEventListener('click', (e) => {
+             e.preventDefault();
+             moveButton();
+        });
+
+        // Yes Button Logic
+        yes.addEventListener('click', () => {
+            h3.innerHTML = `Yayyy! ❤️`;
+            p.innerHTML = `You've made me the happiest person on earth Suhabi🥺🙈🫂. Be my Valentine's for always and forever 😘😘🖤💙`;
+            img.src = `girlkiss.gif`;
+            btnContainer.style.display = 'none';
+            no.style.display = 'none'; 
+            document.body.style.background = "linear-gradient(135deg, #ff9a9e 0%, #ff5252 100%)";
+        });
+    </script>
+</body>
+</html>
